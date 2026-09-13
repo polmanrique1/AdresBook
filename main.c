@@ -34,6 +34,7 @@ void createContact(const char *phoneNumber, const char *name){
 void readContacts(){
     FILE *file = fopen("data.txt", "r");
 
+    
     Contanct con;
     while (fscanf(file, "%d %49s", &con.phoneNumber, con.contactName) == 2)
     {
@@ -41,6 +42,41 @@ void readContacts(){
     }
     
     fclose(file);
+}
+
+void readByPhoneNumber(int *number){
+    FILE *file = fopen("data.txt", "r");
+
+    Contanct con;
+    while (fscanf(file,"%d %49s", &con.contactName, &con.phoneNumber)==2)
+    {
+        if (con.phoneNumber == atoi(number))
+        {
+            printf("Contact: %s | %d\n", con.contactName, con.phoneNumber);
+    
+        }
+    }
+}
+
+void readByPhoneName(char *name){
+    FILE *file = fopen("data.txt", "r");
+
+    Contanct con;
+    while (fscanf(file,"%d %49s", &con.contactName, &con.phoneNumber)==2)
+    {
+        if (con.contactName == name)
+        {
+            printf("Contact: %s | %d\n", con.contactName, con.phoneNumber);
+    
+        }
+    }
+}
+
+void deleteByName(char *name){
+    FILE *file = fopen("data.txt", "r");
+    FILE *file = fopen("data.txt", "r");
+
+    
 }
 
 
@@ -58,6 +94,10 @@ int main(int argc, char *argv[]){
     
     if(strcmp(argv[1], "list")==0){
         readContacts();
+    }
+
+    if(strcmp(argv[1], "get")==0){
+        readByPhoneNumber(argv[2]);
     }
 
     return 0;
