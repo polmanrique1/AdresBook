@@ -118,6 +118,10 @@ int main(int argc, char *argv[]){
         readByPhoneNumber(argv[2]);
     }
 
+    if(strcmp(argv[1], "getn")==0){
+        readByPhoneName(argv[2]);
+    }
+    
     if (strcmp(argv[1], "r")==0)
     {
         deleteByName(argv[2]);
